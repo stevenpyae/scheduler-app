@@ -1,1 +1,12 @@
 Error: dRunning scripts is disabled on this system: https://www.youtube.com/watch?v=FkwZfFT_v9Q
+
+
+
+FrontEnd Setup
+# From root of your project
+npx create-react-app frontend
+cd frontend
+npm install axios @fullcalendar/react @fullcalendar/daygrid @fullcalendar/timegrid @fullcalendar/interaction
+
+npm install tailwindcss
+npx tailwindcss init
