@@ -12,11 +12,21 @@ class Teacher(models.Model):
         """ String representation of the Teacher: Easier to identify the teacher """
         return self.name
 
+class PriorityLevel(models.Model):
+    class Priority(models.IntegerChoices):
+        LOW = 1, 'Low'
+        MEDIUM = 2, 'Medium'
+        HIGH = 3, 'High'
+        URGENT = 4, 'Urgent'
+        CRITICAL = 5, 'Critical'
+    """ Priority levels for scheduling sessions """
+    
+
 class Student(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField(unique=True)
     created_at = models.DateTimeField(auto_now_add=True)
-    priority = models.CharField(max_length = 10, choices=list('High', 'Low', 'Mid'))  # Priority level for scheduling 1 - Low, 5 - High
+    Priority = models.IntegerField(choices=PriorityLevel.Priority.choices)
 
     incompatible_students = models.ManyToManyField(
         'self', 
